@@ -35,7 +35,9 @@ print('New list with removed item from end is {}'.format(new_list))
 
 print('Popped item at index 2 is {}'.format(new_list.pop(2)))
 
-# list sorting - .sort doesn't return any value by itself, does sorting in place, to print sorted list print() method to be used
+# list sorting - .sort doesn't return any value by itself, does sorting in place, 
+# to print sorted list print() method to be used
+# can also use sorted(list_name) to sort a list
 char_list = ['l', 'o', 'a', 'e']
 num_list = [11, 9, 5, 3, 8]
 char_list.sort()
