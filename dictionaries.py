@@ -24,3 +24,8 @@ print('Updated dictionary after adding new/modifying existing values is {}'.form
 print('Keys of dictionary are {}'.format(d.keys()))
 print('Values of dictionary keys are {}'.format(d.values()))
 print('Items of dictionary are {}'.format(d.items()))
+
+#Python has a built-in method of doing a self subtraction or addition (or multiplication or division).
+# setting object to itself minus 250
+d['k4'] -= 250
+print(d['k4'])
