@@ -47,4 +47,14 @@ for key,value in d.items():
 # can also do: for value in d.values()
     print(value)
 
-# to print keys either use default way or replace d.items() by d.keys()  
+# to print keys either use default way or replace d.items() by d.keys() 
+
+
+# --------------------------While loop------------------------
+# execute a block of code while a condition remains true
+# syntax: while some_boolean_condition: do something
+
+x = 0
+while x < 5:
+    print(f'Current value of x is {x}')
+    x = x + 1 
