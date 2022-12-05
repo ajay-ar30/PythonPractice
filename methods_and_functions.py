@@ -72,8 +72,7 @@ There will be 3 positions in the list, one of which is an 'O', a function will s
 and finally another will check to see if it is correct. 
 This is based on the classic carnival game of guessing which cup a red ball is under.'''
 
-# custom shuffle function
-
+# custom shuffle function:
 from random import shuffle
 example_list = [1,2,3,4,5,6,7,8,9,10]
 def shuffle_list(mylist):
@@ -82,3 +81,33 @@ def shuffle_list(mylist):
 
 result = shuffle_list(example_list)
 print('Shuffled list is ',result)
+
+# guessing game:
+my_game_list = ['','O','']
+def shuffle_game_list(my_game_list):
+    shuffle(mylist)
+    return mylist
+shuffle_game_list(mylist)
+
+def player_guess():
+    guess = ''
+    while guess not in ['0','1','2']:
+        guess = input("Pick a number: 0,1 or 2")
+    return int(guess)
+myindex = player_guess() 
+
+def check_guess(mylist, guess):
+    if mylist[guess] == 'O':
+        print("Correct guess!")
+    else:
+        print("Wrong guess! List is:",mylist)
+        
+# Initial List
+mylist1 = ['','O','']
+# Shuffled List
+mixed_list = shuffle_game_list(mylist1)
+# User guess
+guess = player_guess()
+# Check guess
+check_guess(mixed_list, guess)
+
