@@ -66,6 +66,7 @@ print(hours)
 # can assign function call to 1 variable and print that variable to check how many values
 
 '''-----------------------------------'''
+
 '''Interactions between functions
 Functions often use results from other functions, let's see a simple example through a guessing game. 
 There will be 3 positions in the list, one of which is an 'O', a function will shuffle the list, another will take a player's guess, 
@@ -110,4 +111,73 @@ mixed_list = shuffle_game_list(mylist1)
 guess = player_guess()
 # Check guess
 check_guess(mixed_list, guess)
+
+# *args and **kwargs - arguments and keyword arguments (function parameters):
+def myfunc(a,b):
+    return sum((a,b))*.05
+
+myfunc(40,60)
+
+'''This function returns 5% of the sum of a and b. In this example, a and b are positional arguments; that is, 40 is assigned to a 
+because it is the first argument, and 60 to b. To work with multiple positional arguments in the sum() function we had to pass them in as a tuple.
+
+What if we want to work with more than two numbers? One way would be to assign a lot of parameters, and give each one a default value.'''
+
+def myfunc(a=0,b=0,c=0,d=0,e=0):
+    return sum((a,b,c,d,e))*.05
+
+myfunc(40,60,20)
+
+''' *args:
+
+When a function parameter starts with an asterisk, it allows for an arbitrary number of arguments, and the function takes them in as a tuple 
+of values. Rewriting the above function:'''
+
+def myfunc(*args):
+    return sum(args)*.05
+
+myfunc(40,60,20)
+
+''' The word "args" is itself arbitrary - any word will do so long as it's preceded by an asterisk. 
+By convention always use *args for easy code understanding '''
+
+def myfunc(*spam):
+    return sum(spam)*.05
+
+myfunc(40,60,20,50,70,80,90)
+
+''' **kwargs - outputs a dictionary '''
+def myfunc(**kwargs):
+    print(kwargs)
+    if 'fruit' in kwargs:
+        print('Selected fruit is {}'.format(kwargs['fruit']))
+    else:
+        print('No fruits present')
+myfunc(fruit='banana',vegs='spinach')
+
+# *args and **kwargs combined:
+def myfunc(*args,**kwargs):
+    print(args)
+    print(kwargs)
+    print('Please give me {} {} and {} {}'.format(args[0],kwargs['food'],args[1],kwargs['fruit']))
+myfunc(10,20,30,40,fruit='apples',food='eggs')
+
+'''Define a function called myfunc that takes in a string, and returns a matching string where every even letter is uppercase, 
+and every odd letter is lowercase. Assume that the incoming string only contains letters, and don't worry about numbers, spaces or punctuation. 
+The output string can start with either an uppercase or lowercase letter, so long as letters alternate throughout the string.'''
+
+
+# example: myfunc('Anthropomorphism')
+# Output: 'aNtHrOpOmOrPhIsM'
+
+def myfunc(name):
+    mylist = []
+    for letter in range(len(name)):
+        if letter % 2 == 0:
+            mylist.append(name[letter].upper())
+        else:
+            mylist.append(name[letter].lower())
+    return ''.join(mylist)
+
+myfunc('abracadabra')    
 
