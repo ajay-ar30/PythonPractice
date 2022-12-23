@@ -93,8 +93,9 @@ def almost_there(n):
         return (False, "{} is not within 10 of 100 or 200".format(n))
 almost_there(209)
 
-'''LEVEL 2 PROBLEMS
-FIND 33:
+# LEVEL 2 PROBLEMS:
+
+'''FIND 33:
 Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
 
 has_33([1, 3, 3]) → True
@@ -134,14 +135,94 @@ def blackjack(a,b,c):
         return 'BUST'
 blackjack(9,29,11)
 
-'''SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 9 (every 6 will be followed by at least one 9). 
+'''SUMMER OF '69: Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 
+and extending to the next 9 (every 6 will be followed by at least one 9). 
 Return 0 for no numbers.
 summer_69([1, 3, 5]) --> 9
 summer_69([4, 5, 6, 7, 8, 9]) --> 9
 summer_69([2, 1, 6, 9, 11]) --> 14'''
     
+def summer_69(arr):
+    total = 0
+    add = True
+    for num in arr:
+        while add:
+            if num != 6:
+                total += num
+                break
+            else:
+                add = False
+        while not add:
+            if num != 9:
+                break
+            else:
+                add = True
+                break
+    return total
+summer_69([4,5,6,7,8,9])
 
+# Challenging PROBLEMS:
 
+'''SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+ spy_game([1,2,4,0,0,7,5]) --> True
+ spy_game([1,0,2,4,0,5,7]) --> True
+ spy_game([1,7,2,0,4,5,0]) --> False'''
 
+def spy_game(nums):
 
+    code = [0,0,7,'x']
     
+    for num in nums:
+        if num == code[0]:
+            code.pop(0)   # code.remove(num) also works
+       
+    return len(code) == 1 # returns boolean value once check for 007 complete and code list of len 1 remains
+    
+spy_game([1,7,2,0,4,5,0])
+    
+'''COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to 
+and including a given number. 
+
+count_primes(100) --> 25 By convention, 0 and 1 are not prime.'''
+
+def count_primes(num):
+    # check for 0,1 input
+    if num < 2:
+        return 0
+    # 2 or greater
+    # list to store prime numbers starting from 2
+    primes = [2]
+    # initialize counter going up to the input num
+    x = 3
+    # x going thru every number upto input num
+    while x <= num:
+        # check if x is prime
+        for y in range (3,x,2):
+            if x % y == 0:
+                x += 2
+                break
+        else:
+            primes.append(x)
+            x += 2
+    print(primes)
+    return len(primes)
+count_primes(56)
+
+'''
+PRINT BIG: Write a function that takes in a single letter, and returns a 5x5 representation of that letter
+print_big('a')
+
+out:   *  
+      * *
+     *****
+     *   *
+     *   *
+HINT: Consider making a dictionary of possible patterns, and mapping the alphabet to specific 5-line combinations of patterns.
+For purposes of this exercise, it's ok if your dictionary stops at "E".
+'''
+
+def print_big(letter):
+    patterns = {1:'  *  ',2:' * * ',3:'*   *',4:'*****',5:'**** ',6:'   * ',7:' *   ',8:'*   * ',9:'*    '}
+    alphabet = {'A':[1,2,4,3,3],'B':[5,3,5,3,5],'C':[4,9,9,9,4],'D':[5,3,3,3,5],'E':[4,9,4,9,4]}
+    for pattern in alphabet[letter.upper()]:
+        print(patterns[pattern])
