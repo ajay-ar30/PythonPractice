@@ -1,8 +1,6 @@
 '''
 Program for a tic tac toe game for two players on a 3x3 board. Pylint rating 10/10; initial 4.59.
 '''
-
-#Set up the tic tac toe board and display it.
 import os
 import random
 
@@ -111,9 +109,9 @@ while True:
         if TURN == 'Player 1':
             # show the board
             display_board(the_board)
-            # choose a POSITION
+            # choose a position
             POSITION = player_choice(the_board,TURN)
-            # place the marker on the POSITION of choice
+            # place the marker on the position of choice
             place_marker(the_board,player1_marker,POSITION)
             # did the player win or is there a tie?
             if check_win(the_board,player1_marker):
@@ -130,9 +128,9 @@ while True:
         else:
             # show the board
             display_board(the_board)
-            # choose a POSITION
+            # choose a position
             POSITION = player_choice(the_board,TURN)
-            # place the marker on the POSITION of choice
+            # place the marker on the position of choice
             place_marker(the_board,player2_marker,POSITION)
             # did the player win or is there a tie?
             if check_win(the_board,player2_marker):
