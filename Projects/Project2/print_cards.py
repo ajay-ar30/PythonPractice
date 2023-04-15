@@ -10,8 +10,8 @@ suit_symbols = {
 card_ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
 
 # Define the card width and height in characters
-card_width = 11
-card_height = 7
+#card_width = 11
+#card_height = 7
 
 # Loop over each rank and suit to create a card
 for rank in card_ranks:

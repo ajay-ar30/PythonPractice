@@ -4,9 +4,15 @@ Program for the War card game. Check Wikipedia for more info.
 import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 
-            'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':14}
+suit_symbols = {
+    'hearts': '♥',
+    'diamonds': '♦',
+    'clubs': '♣',
+    'spades': '♠'
+}
+ranks = ('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
+values = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, 
+            '9':9, '10':10, 'J':11, 'Q':12, 'K':13, 'A':14}
 
 #CARD class
 class Card:
@@ -16,6 +22,24 @@ class Card:
         self.value = values[rank]
     def __str__(self): #useful when using print() function to print instance of class as it looks at what this method returns for the instance
         return self.rank + " of " + self.suit
+    '''def print_card(self):
+        for rank in ranks:
+            for suit in suit_symbols.values():
+                # Print the top of the card
+                print('┌─────────┐')
+        
+                # Print the card rank and suit symbol
+                print(f'│ {rank:<2}      │')
+                print('│         │')
+                print(f'│    {suit}    │')
+                print('│         │')
+                print(f'│      {rank:>2} │')
+        
+                # Print the bottom of the card
+                print('└─────────┘')
+        
+                # Add a space between each card
+                print()'''
 #my_card = Card("Hearts","Two")
 #print(my_card.value)
 
@@ -83,7 +107,7 @@ round_num = 0
 while game_on:
     round_num += 1
     print(f"Round number {round_num}")
-
+    
     if len(player_one.player_cards) == 0:
         print("Player one has no cards left. Player two wins!")
         game_on = False
@@ -101,6 +125,9 @@ while game_on:
     playerone_playcards.append(player_one.remove_one())
     playertwo_playcards.append(player_two.remove_one())
 
+    print(f"Player one: {playerone_playcards[-1].rank} of {playerone_playcards[-1].suit}")
+    print(f"Player two: {playertwo_playcards[-1].rank} of {playertwo_playcards[-1].suit}")
+
     '''playerone_playcards (and playertwo_playcards) are the cards that are played from their respective hands -- 
     in an actual card game, those would be the cards that are put down on the table face-up to see who wins the hand.'''
 
@@ -116,6 +143,7 @@ while game_on:
     '''
     at_war = True
     while at_war:
+        
         if playerone_playcards[-1].value > playertwo_playcards[-1].value:
             player_one.add_cards(playerone_playcards)
             player_one.add_cards(playertwo_playcards)
