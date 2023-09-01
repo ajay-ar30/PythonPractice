@@ -1,32 +1,5 @@
 '''Milestone Project 2 - Blackjack Game
-In this milestone project you will be creating a Complete BlackJack Card Game in Python.
-
-Here are the requirements:
-
-You need to create a simple text-based BlackJack game
-The game needs to have one player versus an automated dealer.
-The player can stand or hit.
-The player must be able to pick their betting amount.
-You need to keep track of the player's total money.
-You need to alert the player of wins, losses, or busts, etc.'''
-
 '''
-To play a hand of Blackjack the following steps must be followed:
-
-Create a deck of 52 cards
-Shuffle the deck
-Ask the Player for their bet
-Make sure that the Player's bet does not exceed their available chips
-Deal two cards to the Dealer and two cards to the Player
-Show only one of the Dealer's cards, the other remains hidden (1 card face up 1 card face down)
-Show both of the Player's cards (2 cards face up)
-Ask the Player if they wish to Hit, and take another card
-If the Player's hand doesn't Bust (go over 21), ask if they'd like to Hit again.
-If a Player Stands, play the Dealer's hand. The dealer will always Hit until the Dealer's value meets or exceeds 17
-Determine the winner and adjust the Player's chips accordingly
-Ask the Player if they'd like to play again
-'''
-
 import random
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
@@ -90,16 +63,7 @@ class Hand: # for computer dealer or player
         while self.value > 21 and self.aces > 0:
             self.value -= 10
             self.aces -= 1
-'''
-test_deck = Deck()
-test_deck.shuffle_deck()
 
-test_player = Hand()
-pulled_card = test_deck.deal_one()
-print(pulled_card)
-test_player.add_card(pulled_card) Can be coded as: test_player.add_card(test_deck.deal_one())
-print(test_player.value)
-'''
 class Chips:
     def __init__(self, total=100):
         self.total = total # can be default value or user input
@@ -165,16 +129,6 @@ def show_all(player,dealer):
     for card in player.cards:
         print(card)
     print(f"Value of Player's hand is: {player.value}")
-'''show_all function can be written as
-def show_all(player,dealer):
-    print("\nDealer's Hand:", *dealer.cards, sep='\n ')
-    print("Dealer's Hand =",dealer.value)
-    print("\nPlayer's Hand:", *player.cards, sep='\n ')
-    print("Player's Hand =",player.value)'''   
-
-'''
-list1 = [1,2,3]
-print("Items are",*list1, sep = '\n')'''
 
 # end of game scenarios
 
