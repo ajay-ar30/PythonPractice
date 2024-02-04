@@ -71,5 +71,5 @@ We can then call on the various attributes.
 
 print(sam.age,frank.name)
 
-git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
+#git config --global user.email "you@example.com"
+#git config --global user.name "Your Name"
